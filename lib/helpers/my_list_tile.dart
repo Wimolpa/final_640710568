@@ -7,7 +7,7 @@ class MyListTile extends StatelessWidget {
   final bool selected;
   final VoidCallback? onTap;
 
-  const MyListTile({
+  const MyListTile( {
     super.key,
     required this.title,
     required this.subtitle,
