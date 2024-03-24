@@ -116,19 +116,19 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(height: 24.0),
 
             // ปุ่มทดสอบ POST API
-            //ElevatedButton(
-            //  onPressed: _handleApiPost,
-            //  child: const Text('Test POST API'),
-            //),
+            ElevatedButton(
+            onPressed: _handleApiPost,
+              child: const Text('ส่งข้อมูล'),
+            ),
 
             //const SizedBox(height: 8.0),
 
             // ปุ่มทดสอบ OK Dialog
-            ElevatedButton(
-              onPressed: _handleShowDialog,
-              child: const Text('ส่งข้อมูล'),
+            //ElevatedButton(
+              //onPressed: _handleShowDialog,
+             // child: const Text('ส่งข้อมูล'),
 
-            ),
+           // ),
           ],
         ),
       ),
