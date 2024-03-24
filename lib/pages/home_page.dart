@@ -79,7 +79,7 @@ class _HomePageState extends State<HomePage> {
             ),
             SizedBox(height: 20.0),
             TextField(
-              controller: _usernameController,
+              controller: _passwordController,
               decoration: InputDecoration(
                 hintText: 'รายละเอียด',
                 filled: true,
@@ -138,17 +138,16 @@ class _HomePageState extends State<HomePage> {
   Future<void> _handleApiPost() async {
     try {
       final data = await ApiCaller().post(
-        "todos",
+        "report_web",
         params: {
-          "userId": 1,
-          "title": "ทดสอบๆๆๆๆๆๆๆๆๆๆๆๆๆๆ",
-          "completed": true,
+          
+          
         },
       );
       // API นี้จะส่งข้อมูลที่เรา post ไป กลับมาเป็น JSON object ดังนั้นต้องใช้ Map รับค่าจาก jsonDecode()
       Map map = jsonDecode(data);
       String text =
-          'ส่งข้อมูลสำเร็จ\n\n - id: ${map['id']} \n - userId: ${map['userId']} \n - title: ${map['title']} \n - completed: ${map['completed']}';
+          'ส่งข้อมูลสำเร็จ\n\n - id: ${map['id']} \n - userId: ${map['url']} \n - title: ${map['description']} \n - completed: ${map['type']}';
       showOkDialog(context: context, title: "Success", message: text);
     } on Exception catch (e) {
       showOkDialog(context: context, title: "Error", message: e.toString());
@@ -162,4 +161,5 @@ class _HomePageState extends State<HomePage> {
       message: "This is a message",
     );
   }
+
 }
