@@ -17,6 +17,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   List<TodoItem> _todoItems = [];
   static const host = 'https://cpsu-api-49b593d4e146.herokuapp.com';
+  var _usernameController = TextEditingController();
+  var _passwordController = TextEditingController();
 
   @override
   void initState() {
@@ -51,9 +53,51 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Center(child: Text('*ต้องการกรอกข้อมูล', style: textTheme.titleMedium)),
+            Center(
+                child:
+                    Text('*ต้องการกรอกข้อมูล', style: textTheme.titleMedium)),
             const SizedBox(height: 8.0),
-            
+            TextField(
+              controller: _usernameController,
+              decoration: InputDecoration(
+                hintText: 'URL*',
+                filled: true,
+                fillColor: Colors.white,
+                contentPadding: const EdgeInsets.only(
+                  left: 16.0,
+                  bottom: 12.0,
+                  top: 12.0,
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(24.0),
+                ),
+                border: OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                  borderRadius: BorderRadius.circular(24.0),
+                ),
+              ),
+            ),
+            SizedBox(height: 20.0),
+            TextField(
+              controller: _usernameController,
+              decoration: InputDecoration(
+                hintText: 'รายละเอียด',
+                filled: true,
+                fillColor: Colors.white,
+                contentPadding: const EdgeInsets.only(
+                  left: 16.0,
+                  bottom: 12.0,
+                  top: 12.0,
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(24.0),
+                ),
+                border: OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                  borderRadius: BorderRadius.circular(24.0),
+                ),
+              ),
+            ),SizedBox(height: 20.0),
             Expanded(
               child: ListView.builder(
                 itemCount: _todoItems.length,
@@ -61,7 +105,7 @@ class _HomePageState extends State<HomePage> {
                   final item = _todoItems[index];
                   return Card(
                     child: ListTile(
-                      trailing: Image.network(host+item.imageUrl),
+                      trailing: Image.network(host + item.imageUrl),
                       title: Text(item.title),
                       subtitle: Text(item.subtitle),
                     ),
@@ -70,7 +114,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             const SizedBox(height: 24.0),
-            
+
             // ปุ่มทดสอบ POST API
             //ElevatedButton(
             //  onPressed: _handleApiPost,
@@ -80,11 +124,11 @@ class _HomePageState extends State<HomePage> {
             //const SizedBox(height: 8.0),
 
             // ปุ่มทดสอบ OK Dialog
-           // ElevatedButton(
-            //  onPressed: _handleShowDialog,
-            //  child: const Text('Show OK Dialog'),
-           // ),
-            
+            ElevatedButton(
+              onPressed: _handleShowDialog,
+              child: const Text('ส่งข้อมูล'),
+
+            ),
           ],
         ),
       ),
@@ -118,5 +162,4 @@ class _HomePageState extends State<HomePage> {
       message: "This is a message",
     );
   }
-
 }
